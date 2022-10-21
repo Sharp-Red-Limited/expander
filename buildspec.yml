@@ -4,11 +4,15 @@ phases:
   install:
     commands:
       - echo Entered the install phase...
+      - curl https://packages.microsoft.com/config/rhel/7/prod.repo | sudo tee /etc/yum.repos.d/microsoft.repo
+      - yum install --assumeyes powershell
     finally:
       - echo This always runs even if the update or install command fails
   pre_build:
     commands:
       - echo Entered the pre_build phase...
+      - pwsh
+      - ./runtests.psl
     finally:
       - echo This always runs even if the login command fails
   build:
