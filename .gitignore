@@ -1,0 +1,8 @@
+output/*
+Archive.zip
+.DS_Store
+coverage/*
+testresults/*
+files.json
+files2.json
+.envrc
