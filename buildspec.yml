@@ -12,7 +12,8 @@ phases:
     commands:
       - echo Entered the pre_build phase...
       - pwsh
-      - ./runtests.psl
+      - Install-Module -Name Pester -Force
+      - ./runtests.ps1
     finally:
       - echo This always runs even if the login command fails
   build:
