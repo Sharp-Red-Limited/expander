@@ -1,19 +1,19 @@
 name: Run Pester Tests
 on: [push]
 jobs:
-    test_run:
-        name: Test run
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout Code
-              uses: actions/checkout@v1
-            - name: Analyse code
-              id: lint_code
-              shell: pwsh
-              run: |
-                  ./lintcode.ps1
-            - name: Run Tests
-              id: test_module
-              shell: pwsh
-              run: |
-                  ./runtests.ps1
+  test_run:
+    name: Test run
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      - name: Analyse code
+        id: lint_code
+        shell: pwsh
+        run: |
+          ./lintcode.ps1
+      - name: Run Tests
+        id: test_module
+        shell: pwsh
+        run: |
+          ./runtests.ps1
