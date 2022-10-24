@@ -1,4 +1,7 @@
 Import-Module Pester -Force
+
+Write-ActionInfo "Running from [$($PSScriptRoot)]"
+
 #see https://pester-docs.netlify.app/docs/commands/New-PesterConfiguration
 $configuration = [PesterConfiguration]@{
     Run          = @{
