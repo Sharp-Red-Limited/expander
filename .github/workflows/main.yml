@@ -7,7 +7,6 @@ jobs:
         steps:
             - name: test module
               id: test_module
-              uses: ./
               shell: pwsh
               run: |
                   ./runtests.ps1
