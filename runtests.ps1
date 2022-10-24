@@ -1,3 +1,4 @@
+Import-Module Pester -Force
 #see https://pester-docs.netlify.app/docs/commands/New-PesterConfiguration
 $configuration = [PesterConfiguration]@{
     Run          = @{
