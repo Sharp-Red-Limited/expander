@@ -1,2 +1,2 @@
 Install-Module PSScriptAnalyzer -Force
-Invoke-ScriptAnalyzer -EnableExit -Recurse -Path .
+Invoke-ScriptAnalyzer -Recurse -Path .
