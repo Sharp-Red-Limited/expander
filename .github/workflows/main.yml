@@ -5,9 +5,14 @@ jobs:
         name: Test run
         runs-on: ubuntu-latest
         steps:
-            - name: checkout
+            - name: Checkout Code
               uses: actions/checkout@v1
-            - name: test module
+            - name: Analyse code
+              id: lint_code
+              shell: pwsh
+              run: |
+                  ./lintcode.ps1
+            - name: Run Tests
               id: test_module
               shell: pwsh
               run: |
