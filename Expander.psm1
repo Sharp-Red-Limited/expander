@@ -1,9 +1,17 @@
-# Implement your module commands in this script.
-
-
-# Export only the functions using PowerShell standard verb-noun naming.
-# Be sure to list each exported functions in the FunctionsToExport field of the module manifest file.
-# This improves performance of command discovery in PowerShell.
+<#
+.SYNOPSIS
+ Doesn't do very much
+.DESCRIPTION
+ This is where you would show a description if your module did anything useful
+.PARAMETER  Name
+ The name of a planet
+.EXAMPLE
+ # Lists all of the planets
+ GetPlanet
+.EXAMPLE
+ # Lists Earth
+ GetPlanet -Name "Earth"
+#>
 function ExpandMyZip {
     Expand-Archive -Path ./Archive.zip -DestinationPath ./output -Force
 }
