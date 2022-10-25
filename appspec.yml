@@ -1,5 +1,9 @@
 version: 0.0
 os: windows
 files:
-  - source: \
-    destination: C:\expander
+  - source: \Expander.psd1
+    destination: C:\expander\Expander.psd1
+  - source: \Expander.psm1
+    destination: C:\expander\Expander.psm1
+  - source: \version.yml
+    destination: C:\expander\version.yml
