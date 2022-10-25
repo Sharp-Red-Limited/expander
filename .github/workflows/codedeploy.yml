@@ -1,33 +1,25 @@
-# This is a basic workflow to help you get started with Actions
-
-name: CodeDeploy
-
-# Controls when the workflow will run
+name: Code Deploy
 on:
-  # Triggers the workflow on push or pull request events but only for the "master" branch
   pull_request:
     branches: ["master"]
     types:
       - closed
 
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  # workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   deployit:
     if: github.event.pull_request.merged == true
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
-
-      # Runs a single command using the runners shell
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.IAMROLE_CODEDEPLOY }}
+          role-session-name: GitHub-Action-Role
+          aws-region: ${{ env.AWS_REGION }}
       - name: Trigger a CodeDeploy deployment
         run: |
           commit_hash=`git rev-parse HEAD`
-          echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }} with commit $commit_hash"
+          aws deploy create-deployment --application-name Expander --deployment-group-name Default --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
