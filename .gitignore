@@ -5,3 +5,4 @@ testresults/*
 files.json
 files2.json
 .envrc
+deployIt.sh
