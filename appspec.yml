@@ -5,10 +5,7 @@ files:
     destination: C:\expander\
   - source: \Expander.psm1
     destination: C:\expander\
+  - source: \Expander.psm1
+    destination: c:\local\PowerShell\modules
   - source: \version.yml
     destination: C:\expander\
-  - source: \postinstall.bat
-    destination: C:\expander\
-hooks:
-  AfterInstall:
-    - location: \postinstall.bat
