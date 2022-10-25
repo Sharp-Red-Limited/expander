@@ -16,7 +16,7 @@ jobs:
         with:
           role-to-assume: ${{ secrets.IAMROLE_CODEDEPLOY }}
           role-session-name: GitHub-Action-Role
-          aws-region: ${{ env.AWS_REGION }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Trigger a CodeDeploy deployment
         run: |
           commit_hash=`git rev-parse HEAD`
