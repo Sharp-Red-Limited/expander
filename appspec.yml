@@ -7,3 +7,8 @@ files:
     destination: C:\expander\
   - source: \version.yml
     destination: C:\expander\
+  - source: \postinstall.bat
+    destination: C:\expander\
+hooks:
+  AfterInstall:
+    - location: \postinstall.bat
