@@ -9,14 +9,16 @@ jobs:
   deployit:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    environment: production
+    environment: GHACTIONS
     steps:
       - uses: actions/checkout@v3
-      #- uses: aws-actions/configure-aws-credentials@v1
-      #  with:
-      #    aws-region: ${{ secrets.AWS_REGION }}
-      #    aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #    aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.IAMROLE_CODEDEPLOY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Trigger a CodeDeploy deployment
         run: |
-          echo "this will deploy some code"
+          commit_hash=`git rev-parse HEAD`
+          aws deploy create-deployment --application-name Expander --deployment-group-name Default --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
