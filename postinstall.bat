@@ -1,1 +1,0 @@
-powershell.exe -Command Install-Module ./Expander.psm1
